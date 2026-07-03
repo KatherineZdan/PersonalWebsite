@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: #17150F; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: #E5482B; color: #F4F1EA; }
+  a { text-decoration: none; color: inherit; }
+  @keyframes kzUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; will-change: opacity, transform; }
+  .reveal.in { animation: kzUp .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  .navlink { position: relative; }
+  .navlink::after { content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .navlink:hover::after { transform: scaleX(1); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; }
+    .reveal.in { animation: none !important; }
+  }
+  @media print { .no-print { display: none !important; } body { background: #fff; } .reveal { opacity: 1 !important; } }
+</style>
+</helmet>
+
+<div style="--ink:#F4F1EA; --muted:#9b968c; --bg:#17150F; --surface:rgba(244,241,234,0.05); --line:rgba(244,241,234,0.16); --accent:#E5482B; background:var(--bg); color:var(--ink); font-family:'Helvetica Neue',Helvetica,'Hanken Grotesk',Arial,sans-serif; min-height:100vh; display:flex; flex-direction:column;">
+
+  <header class="no-print" style="display:flex; align-items:center; justify-content:space-between; padding:26px clamp(20px,5vw,72px); border-bottom:1px solid var(--line);">
+    <a href="Home.dc.html" style="display:flex; align-items:baseline; gap:12px;">
+      <span style="font-weight:500; font-size:25px; letter-spacing:-0.01em;">Katherine Zdanowski</span>
+      <span style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);">Strategy &amp; Research</span>
+    </a>
+    <nav style="display:flex; align-items:center; gap:clamp(16px,2.4vw,34px); font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.8px; text-transform:uppercase;">
+      <a href="Home.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">Index</a>
+      <a href="About.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">About</a>
+      <a href="Work.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">Work</a>
+      <a href="Experience.dc.html" class="navlink" style="color:var(--ink);">Experience</a>
+      <a href="Contact.dc.html" class="navlink" style="color:var(--accent);" style-hover="color:var(--ink);">Contact ↗</a>
+    </nav>
+  </header>
+
+  <main style="flex:1; padding:clamp(36px,6vw,84px) clamp(20px,5vw,72px) clamp(28px,4vw,52px);">
+
+    <div class="reveal" style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:clamp(40px,5vw,64px); border-bottom:1px solid var(--line); padding-bottom:clamp(28px,3vw,44px);">
+      <div>
+        <div style="display:flex; align-items:center; gap:14px; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); margin-bottom:22px;">
+          <span style="color:var(--accent);">03</span><span>Experience</span>
+        </div>
+        <h1 style="font-weight:500; letter-spacing:-0.025em; font-size:clamp(34px,4.6vw,64px); line-height:1.04; margin:0;">The résumé.</h1>
+      </div>
+      <button onClick="{{ printCV }}" class="no-print" style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.8px; text-transform:uppercase; border:1px solid var(--ink); background:var(--ink); color:var(--bg); border-radius:100px; padding:13px 22px; cursor:pointer; transition:background .2s,color .2s;" style-hover="background:var(--accent); border-color:var(--accent);">Download CV (PDF) ↓</button>
+    </div>
+
+    <div style="display:grid; grid-template-columns:minmax(0,1.55fr) minmax(0,1fr); gap:clamp(36px,6vw,88px); align-items:start;">
+
+      <div>
+        <div class="reveal" style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); margin-bottom:28px;">Experience</div>
+
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="3">
+          <div class="reveal" style="display:grid; grid-template-columns:130px minmax(0,1fr); gap:clamp(14px,2vw,28px); padding:0 0 clamp(28px,3vw,40px); border-top:1px solid var(--line); padding-top:24px; margin-bottom:4px;">
+            <div style="font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:0.5px; color:var(--muted); padding-top:5px;">{{ r.dates }}</div>
+            <div>
+              <h3 style="font-weight:500; letter-spacing:-0.02em; font-size:clamp(21px,2.2vw,28px); line-height:1.15; margin:0 0 4px;">{{ r.title }}</h3>
+              <div style="font-size:14px; color:var(--accent); margin-bottom:14px;">{{ r.org }}</div>
+              <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px;">
+                <sc-for list="{{ r.points }}" as="pt" hint-placeholder-count="3">
+                  <li style="display:flex; gap:11px; font-size:14.5px; line-height:1.55; color:rgba(244,241,234,0.74);"><span style="color:var(--accent);">—</span><span>{{ pt }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:clamp(36px,4vw,52px);">
+        <div>
+          <div class="reveal" style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); margin-bottom:24px;">Education</div>
+          <sc-for list="{{ education }}" as="e" hint-placeholder-count="2">
+            <div class="reveal" style="border-top:1px solid var(--line); padding:20px 0;">
+              <div style="font-family:'Space Mono',monospace; font-size:11px; color:var(--muted); margin-bottom:8px;">{{ e.years }}</div>
+              <h3 style="font-weight:500; letter-spacing:-0.01em; font-size:22px; line-height:1.2; margin:0 0 6px;">{{ e.degree }}</h3>
+              <div style="font-size:14px; color:rgba(244,241,234,0.74);">{{ e.school }}</div>
+              <div style="font-size:13px; color:var(--accent); margin-top:4px;">{{ e.note }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div class="reveal">
+          <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); margin-bottom:18px;">Core capabilities</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ skills }}" as="s" hint-placeholder-count="8">
+              <span style="font-family:'Space Mono',monospace; font-size:11.5px; color:rgba(244,241,234,0.74); border:1px solid var(--line); border-radius:100px; padding:6px 13px; background:rgba(244,241,234,0.05);">{{ s }}</span>
+            </sc-for>
+          </div>
+        </div>
+
+        <div class="reveal" style="background:var(--surface); color:var(--ink); padding:26px; border-radius:6px; border:1px solid var(--line);">
+          <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; opacity:0.6; margin-bottom:14px;">At a glance</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div><div style="font-weight:500; letter-spacing:-0.01em; font-size:34px; line-height:1;">$<span data-count="2">0</span>M+</div><div style="font-size:13px; opacity:0.7; margin-top:4px;">Largest engagement scoped, sold &amp; delivered end-to-end</div></div>
+            <div style="height:1px; background:rgba(244,241,234,0.18);"></div>
+            <div><div style="font-weight:500; letter-spacing:-0.01em; font-size:34px; line-height:1;"><span data-count="4">0</span> sectors</div><div style="font-size:13px; opacity:0.7; margin-top:4px;">Retail · CPG · Healthcare · Financial Services</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="no-print" style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; padding:22px clamp(20px,5vw,72px); border-top:1px solid var(--line); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.6px; color:var(--muted);">
+    <a href="Work.dc.html" class="navlink" style="color:var(--ink);" style-hover="color:var(--accent);">← Work</a>
+    <span style="text-transform:uppercase; letter-spacing:1.4px;">Experience</span>
+    <a href="Contact.dc.html" class="navlink" style="color:var(--ink);" style-hover="color:var(--accent);">Contact →</a>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const countUp = (el) => {
+      const to = parseFloat(el.dataset.count);
+      if (reduce) { el.textContent = to; return; }
+      const dur = 1100, t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min((t - t0) / dur, 1);
+        const eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(to * eased);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const reveal = () => {
+      const vh = window.innerHeight || 800;
+      document.querySelectorAll('.reveal:not(.in)').forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > -40) {
+          if (!el.style.animationDelay) el.style.animationDelay = Math.min(i * 70, 420) + 'ms';
+          el.classList.add('in');
+          el.querySelectorAll('[data-count]').forEach(countUp);
+        }
+      });
+    };
+    this._reveal = reveal;
+    reveal();
+    window.addEventListener('scroll', reveal, { passive: true });
+    window.addEventListener('resize', reveal);
+    [80, 250, 600].forEach((d) => setTimeout(reveal, d));
+    setTimeout(() => document.querySelectorAll('.reveal.in').forEach((e) => { e.style.opacity = '1'; }), 1500);
+  }
+  componentWillUnmount() {
+    if (this._reveal) { window.removeEventListener('scroll', this._reveal); window.removeEventListener('resize', this._reveal); }
+  }
+  renderVals() {
+    return {
+      printCV: () => window.print(),
+      roles: [
+        { dates:'20XX — Present', title:'Senior Consultant — Growth Strategy & Customer Research', org:'[ Add firm name ]',
+          points:[
+            'Lead consumer-focused strategy engagements for merchants, marketers, and C-suite teams across retail, CPG, healthcare, and financial services.',
+            'Scope, sell, and deliver $500K–$2M+ engagements end-to-end — from the case for change to a funded, executable set of choices.',
+            'Pair qualitative human insight with quantitative rigour to inform executive-level decisions, and embed ethics, inclusivity, and transparency into strategy and design.'
+          ]},
+        { dates:'20XX — 20XX', title:'[ Previous role title ]', org:'[ Add company ]',
+          points:[ 'Add a key responsibility or outcome.', 'Add a measurable result or scope.' ]},
+        { dates:'20XX — 20XX', title:'[ Earlier role title ]', org:'[ Add company ]',
+          points:[ 'Add a key responsibility or outcome.' ]}
+      ],
+      education: [
+        { years:'Masters', degree:'MA — AI Ethics (New Media & Digital Culture)', school:'University of Amsterdam', note:'' },
+        { years:'Bachelors', degree:'Hon. BA — Digital Enterprise Management Specialist', school:'University of Toronto', note:'High Distinction' }
+      ],
+      skills: ['Customer Strategy','Growth Strategy','Service Design','Market Research','Business Modelling','Behavioural Science','Human-Centred Design','AI Ethics','Operating-Model Redesign','Loyalty','Brand Strategy','Rapid Prototyping']
+    };
+  }
+}
+</script>
+</body>
+</html>

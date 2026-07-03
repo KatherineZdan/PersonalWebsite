@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: #17150F; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: #E5482B; color: #F4F1EA; }
+  a { text-decoration: none; color: inherit; }
+  @keyframes kzUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes kzMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .reveal { opacity: 0; will-change: opacity, transform; }
+  .reveal.in { animation: kzUp .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  .navlink { position: relative; }
+  .navlink::after { content: ''; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .navlink:hover::after { transform: scaleX(1); }
+  .marquee-mask { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+  .marquee { display: flex; gap: 10px; width: max-content; animation: kzMarquee 42s linear infinite; }
+  .marquee-mask:hover .marquee { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; }
+    .reveal.in, .marquee { animation: none !important; transition: none !important; }
+    .marquee { flex-wrap: wrap; }
+  }
+</style>
+</helmet>
+
+<div style="--ink:#F4F1EA; --muted:#9b968c; --bg:#17150F; --surface:rgba(244,241,234,0.05); --line:rgba(244,241,234,0.16); --accent:#E5482B; background:var(--bg); color:var(--ink); font-family:'Helvetica Neue',Helvetica,'Hanken Grotesk',Arial,sans-serif; min-height:100vh; display:flex; flex-direction:column;">
+
+  <header style="display:flex; align-items:center; justify-content:space-between; padding:26px clamp(20px,5vw,72px); border-bottom:1px solid var(--line);">
+    <a href="Home.dc.html" style="display:flex; align-items:baseline; gap:12px;">
+      <span style="font-weight:500; font-size:25px; letter-spacing:-0.01em;">Katherine Zdanowski</span>
+      <span style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);">Strategy &amp; Research</span>
+    </a>
+    <nav style="display:flex; align-items:center; gap:clamp(16px,2.4vw,34px); font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.8px; text-transform:uppercase;">
+      <a href="Home.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">Index</a>
+      <a href="About.dc.html" class="navlink" style="color:var(--ink);">About</a>
+      <a href="Work.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">Work</a>
+      <a href="Experience.dc.html" class="navlink" style="color:var(--muted);" style-hover="color:var(--ink);">Experience</a>
+      <a href="Contact.dc.html" class="navlink" style="color:var(--accent);" style-hover="color:var(--ink);">Contact ↗</a>
+    </nav>
+  </header>
+
+  <main style="flex:1; padding:clamp(36px,6vw,84px) clamp(20px,5vw,72px) clamp(28px,4vw,52px);">
+
+    <div class="reveal" style="display:flex; align-items:center; gap:14px; font-family:'Space Mono',monospace; font-size:11.5px; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); margin-bottom:clamp(22px,3vw,40px);">
+      <span style="color:var(--accent);">01</span>
+      <span>About</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,420px); gap:clamp(32px,5vw,72px); align-items:start;">
+      <div>
+        <h1 class="reveal" style="font-weight:500; letter-spacing:-0.025em; font-size:clamp(34px,4.6vw,64px); line-height:1.04; margin:0 0 clamp(28px,3vw,40px); max-width:18ch;">
+          I build the case for change on <span style="color:var(--accent);">real customer evidence</span> — then turn it into choices teams can execute.
+        </h1>
+
+        <div class="reveal" style="display:flex; flex-direction:column; gap:20px; max-width:62ch; font-size:clamp(15px,1.25vw,17.5px); line-height:1.68; color:rgba(244,241,234,0.74);">
+          <p style="margin:0;">My work spans customer and growth strategy, service design, marketing, loyalty, and operating-model redesign — connecting qualitative human insight with quantitative rigour to inform executive-level decisions.</p>
+          <p style="margin:0;">The programs I lead secure executive funding because the case for change is grounded in real customer evidence: it moves teams faster and shows measurable impact for the business. I've scoped, sold, and delivered <span style="color:var(--ink); font-weight:600;">$500K–$2M+ engagements end-to-end</span> across retail, CPG, healthcare, and financial services.</p>
+          <p style="margin:0;">As AI and emerging technologies reshape customer experiences, I advocate for responsible, human-centred innovation — embedding ethics, inclusivity, and transparency directly into strategy and design decisions to anticipate risk, mitigate bias, and protect long-term value for organizations and the communities they serve.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex; flex-direction:column; gap:14px;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="kz-headshot" style="width:100%; aspect-ratio:4/5; display:block;" shape="rounded" radius="4" placeholder="Drop your headshot" hint-size="100%,420px"></x-import>
+        <div style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1px; color:var(--muted); display:flex; justify-content:space-between;">
+          <span>FIG. 01 — Katherine Zdanowski</span>
+          <span>Toronto</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(48px,6vw,88px); border-top:1px solid var(--line); padding-top:clamp(28px,3vw,40px);">
+      <div class="reveal" style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); margin-bottom:24px;">Specialties</div>
+      <div class="marquee-mask">
+        <div class="marquee">
+          <sc-for list="{{ marqueeTags }}" as="tag" hint-placeholder-count="18">
+            <span style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.3px; color:rgba(244,241,234,0.74); border:1px solid var(--line); border-radius:100px; padding:8px 15px; background:rgba(244,241,234,0.05); white-space:nowrap;">{{ tag }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:clamp(48px,6vw,88px); border-top:1px solid var(--line); padding-top:clamp(28px,3vw,40px);">
+      <div class="reveal" style="font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); margin-bottom:8px;">Beyond the work</div>
+      <p class="reveal" style="margin:0 0 clamp(28px,3vw,44px); font-weight:500; letter-spacing:-0.015em; font-size:clamp(22px,2.4vw,32px); line-height:1.25; max-width:24ch; color:var(--ink);">A practice that runs on craft, materials, and being on the water.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:clamp(16px,2vw,28px);">
+        <div class="reveal" style="display:flex; flex-direction:column; gap:14px;">
+          <div style="aspect-ratio:1/1; background:repeating-linear-gradient(45deg, rgba(244,241,234,0.07), rgba(244,241,234,0.07) 9px, rgba(244,241,234,0.035) 9px, rgba(244,241,234,0.035) 18px); border:1px solid var(--line); display:flex; align-items:flex-end; padding:14px;">
+            <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.5px; color:var(--muted);">[ rowing — on the water ]</span>
+          </div>
+          <div><div style="font-weight:600; margin-bottom:4px;">Rowing</div><div style="color:var(--muted); font-size:14px; line-height:1.55;">Early mornings, long pieces, and the discipline of a crew that moves as one.</div></div>
+        </div>
+        <div class="reveal" style="display:flex; flex-direction:column; gap:14px;">
+          <div style="aspect-ratio:1/1; background:repeating-linear-gradient(45deg, rgba(244,241,234,0.07), rgba(244,241,234,0.07) 9px, rgba(244,241,234,0.035) 9px, rgba(244,241,234,0.035) 18px); border:1px solid var(--line); display:flex; align-items:flex-end; padding:14px;">
+            <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.5px; color:var(--muted);">[ acrylic &amp; mixed media ]</span>
+          </div>
+          <div><div style="font-weight:600; margin-bottom:4px;">Painting</div><div style="color:var(--muted); font-size:14px; line-height:1.55;">Acrylic and mixed media on canvas — texture, layering, and happy accidents.</div></div>
+        </div>
+        <div class="reveal" style="display:flex; flex-direction:column; gap:14px;">
+          <div style="aspect-ratio:1/1; background:repeating-linear-gradient(45deg, rgba(244,241,234,0.07), rgba(244,241,234,0.07) 9px, rgba(244,241,234,0.035) 9px, rgba(244,241,234,0.035) 18px); border:1px solid var(--line); display:flex; align-items:flex-end; padding:14px;">
+            <span style="font-family:'Space Mono',monospace; font-size:10px; letter-spacing:0.5px; color:var(--muted);">[ furniture sketch ]</span>
+          </div>
+          <div><div style="font-weight:600; margin-bottom:4px;">Furniture design</div><div style="color:var(--muted); font-size:14px; line-height:1.55;">An aspiring furniture designer — drawn to form, joinery, and objects built to last.</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; padding:22px clamp(20px,5vw,72px); border-top:1px solid var(--line); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:0.6px; color:var(--muted);">
+    <a href="Home.dc.html" class="navlink" style="color:var(--ink);" style-hover="color:var(--accent);">← Index</a>
+    <span style="text-transform:uppercase; letter-spacing:1.4px;">About</span>
+    <a href="Work.dc.html" class="navlink" style="color:var(--ink);" style-hover="color:var(--accent);">Work →</a>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reveal = () => {
+      const vh = window.innerHeight || 800;
+      document.querySelectorAll('.reveal:not(.in)').forEach((el, i) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > -40) {
+          if (!el.style.animationDelay) el.style.animationDelay = Math.min(i * 70, 420) + 'ms';
+          el.classList.add('in');
+        }
+      });
+    };
+    this._reveal = reveal;
+    reveal();
+    window.addEventListener('scroll', reveal, { passive: true });
+    window.addEventListener('resize', reveal);
+    [80, 250, 600].forEach((d) => setTimeout(reveal, d));
+    setTimeout(() => document.querySelectorAll('.reveal.in').forEach((e) => { e.style.opacity = '1'; }), 1500);
+  }
+  componentWillUnmount() {
+    if (this._reveal) { window.removeEventListener('scroll', this._reveal); window.removeEventListener('resize', this._reveal); }
+  }
+  renderVals() {
+    const specialties = [
+      'Customer Strategy','Corporate Strategy','Organic Growth Strategy','Market Research',
+      'Business Modelling','Go-to-Market Strategy','Innovation Strategy','Design Thinking',
+      'Behavioural Science','Marketing','Digital Marketing','Brand Strategy',
+      'Human-Centred Design','Business Design','Ethics','Rapid Prototyping','Service Design','Loyalty'
+    ];
+    return { marqueeTags: [...specialties, ...specialties] };
+  }
+}
+</script>
+</body>
+</html>
