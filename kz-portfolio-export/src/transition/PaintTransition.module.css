@@ -1,0 +1,70 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  pointer-events: all;
+}
+
+.band {
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  height: 22%;
+  transform: translateX(-104%);
+  will-change: transform;
+}
+
+.band[data-band='0'] {
+  top: 0;
+  background: #e5482b;
+  border-radius: 0 46% 58% 0 / 0 78% 62% 0;
+}
+.band[data-band='1'] {
+  top: 19.5%;
+  background: #c98f2d;
+  border-radius: 0 60% 38% 0 / 0 55% 80% 0;
+}
+.band[data-band='2'] {
+  top: 39%;
+  background: #f4f1ea;
+  border-radius: 0 40% 64% 0 / 0 70% 48% 0;
+}
+.band[data-band='3'] {
+  top: 58.5%;
+  background: #c73a20;
+  border-radius: 0 56% 44% 0 / 0 62% 72% 0;
+}
+.band[data-band='4'] {
+  top: 78%;
+  height: 22.5%;
+  background: #3a3428;
+  border-radius: 0 50% 52% 0 / 0 66% 58% 0;
+}
+
+@keyframes sweepIn {
+  from {
+    transform: translateX(-104%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes sweepOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(104%);
+  }
+}
+
+.bandIn {
+  animation: sweepIn 0.34s cubic-bezier(0.5, 0, 0.28, 1) forwards;
+}
+
+.bandOut {
+  transform: translateX(0);
+  animation: sweepOut 0.4s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}

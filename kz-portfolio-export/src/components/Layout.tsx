@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { TransitionLink } from '../transition/PaintTransition';
 import styles from './Layout.module.css';
 
 const NAV_ITEMS = [
   { path: '/', label: 'Index' },
   { path: '/about', label: 'About' },
   { path: '/work', label: 'Work' },
+  { path: '/art', label: 'Art' },
   { path: '/experience', label: 'Experience' },
   { path: '/contact', label: 'Contact ↗' },
 ];
@@ -16,10 +18,10 @@ export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link to="/" className={styles.brand}>
+        <TransitionLink to="/" className={styles.brand}>
           <span className={styles.brandName}>Katherine Zdanowski</span>
           <span className={styles.brandTag}>Strategy &amp; Research</span>
-        </Link>
+        </TransitionLink>
         <nav className={styles.nav}>
           {NAV_ITEMS.map((item) => {
             const isContact = item.path === '/contact';
@@ -32,9 +34,9 @@ export function Layout({ children }: { children: ReactNode }) {
               .filter(Boolean)
               .join(' ');
             return (
-              <Link key={item.path} to={item.path} className={className}>
+              <TransitionLink key={item.path} to={item.path} className={className}>
                 {item.label}
-              </Link>
+              </TransitionLink>
             );
           })}
         </nav>

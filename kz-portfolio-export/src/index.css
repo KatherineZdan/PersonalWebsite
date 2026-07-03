@@ -22,6 +22,7 @@ body {
   font-family:
     'Helvetica Neue',
     Helvetica,
+    'Hanken Grotesk',
     Arial,
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,6 +50,31 @@ a {
     SFMono-Regular,
     Menlo,
     monospace;
+}
+
+@keyframes kzMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: kzMarquee 42s linear infinite;
+}
+
+.marquee-mask:hover .marquee {
+  animation-play-state: paused;
 }
 
 @keyframes kzUp {
@@ -135,8 +161,12 @@ a {
   .reveal.in,
   .pulse,
   .row-arrow,
-  .index-row {
+  .index-row,
+  .marquee {
     animation: none !important;
     transition: none !important;
+  }
+  .marquee {
+    flex-wrap: wrap;
   }
 }

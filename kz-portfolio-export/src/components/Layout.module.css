@@ -63,6 +63,18 @@
   padding: clamp(40px, 7vw, 96px) clamp(20px, 5vw, 72px) clamp(28px, 4vw, 52px);
 }
 
+@media (max-width: 600px) {
+  .brandName {
+    font-size: 20px;
+  }
+  .nav {
+    font-size: 10.5px;
+    gap: 14px;
+    row-gap: 8px;
+    flex-wrap: wrap;
+  }
+}
+
 .footer {
   display: flex;
   flex-wrap: wrap;
